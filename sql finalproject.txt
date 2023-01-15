@@ -1,0 +1,15 @@
+create database dentist;
+use dentist;
+create table Doctor(id int primary key,
+Doctor_username varchar(255) unique not null,Doctor_password varchar(255) not null ,
+Doctor_name  varchar(255)not null,Doctor_nationalID int not null,
+Doctor_specialty varchar(255) not null,Doctor_phonenumber varchar(255)not null
+);
+create table patient (id int primary key ,Patient_username varchar(255)unique not null,Patient_password varchar(255)not null,
+Patient_name varchar(255)not null ,age int not null,gender varchar(255)not null,Patient_phonenumber varchar(255)not null);
+create table appointment( id int AUTO_INCREMENT primary key, hours  ENUM ('8', '9', '10','11', '12', '13','14', '15', '16')
+ ,doctorapp int ,patientapp int,
+foreign key (doctorapp) references dentist.doctor(id),
+foreign key (patientapp)references dentist.patient(id),
+Date1 date,time1 time ,isBooked boolean ,isVisited boolean );
+ 
